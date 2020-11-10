@@ -9,7 +9,8 @@ Components:
 
 - "FTDI FT232RL USB To TTL" to upload code to Arduino Pro Mini. Remember to change toggle to 3v on the board before connecting to Arduino Pro Mini. 
 Also soldering is not required, just put FTDI pins in holes of Pro Mini and upload sketch:
-![IMG_3745](https://user-images.githubusercontent.com/109203/98669090-71b04f00-2383-11eb-8bd9-1ca3fa829193.jpeg)
+![IMG_3745](https://user-images.githubusercontent.com/109203/98669690-4712c600-2384-11eb-8d3c-eab1f79b2edf.png)
+
 
 You can buy it here:
 
