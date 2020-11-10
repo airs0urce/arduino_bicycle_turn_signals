@@ -30,6 +30,7 @@ You can buy it here:
     [Link3](https://www.aliexpress.com/item/32799049355.html?spm=a2g0o.productlist.0.0.43454413XVxNj7&algo_pvid=8d6f320f-5e61-49a0-a128-c69a9eb959eb&algo_expid=8d6f320f-5e61-49a0-a128-c69a9eb959eb-7&btsid=0bb0623316050048266315715eb994&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
 
 - Two IRLB3034 mosfet transistors
+- Two 10 kOhm and two 100 Ohm resistors.
 
 You will need to remove power LED and voltage regulator from Arduino Pro Mini to save energy:
 https://www.iot-experiments.com/arduino-pro-mini-power-consumption/
