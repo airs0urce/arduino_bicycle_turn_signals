@@ -29,5 +29,9 @@ While sleeping the project is using about 150uA. It's about 10 months on 1000mAh
 While blinking the project is using 3mA current. About 14 days on 1000mAh battery.
 So, arduino itself will eat just a little energy. LED lamps will be eating most energy.
 
-
 How it works: https://www.youtube.com/watch?v=5mdGutMXXeE&feature=youtu.be
+
+
+Schematics:
+
+![turns_bb](https://user-images.githubusercontent.com/109203/98668673-cd2e0d00-2382-11eb-9139-51e54b6c9164.png)
