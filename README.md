@@ -7,15 +7,20 @@ Components:
 
 - One Arduino Pro Mini 3v 8Mhz.
 
-- "FTDI FT232RL USB To TTL" to upload code to Arduino Pro Mini.  You can buy it here:
-    https://www.aliexpress.com/item/1005001636675031.html?spm=a2g0o.productlist.0.0.382162fcwDbMcN&algo_pvid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67&algo_expid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67-1&btsid=0bb0623416050047155106819ed6a9&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
-    https://www.aliexpress.com/item/32831177985.html?spm=a2g0o.productlist.0.0.382162fcwDbMcN&algo_pvid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67&algo_expid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67-5&btsid=0bb0623416050047155106819ed6a9&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
-    https://www.aliexpress.com/item/4000308024512.html?spm=a2g0o.productlist.0.0.382162fcwDbMcN&algo_pvid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67&algo_expid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67-12&btsid=0bb0623416050047155106819ed6a9&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
+- "FTDI FT232RL USB To TTL" to upload code to Arduino Pro Mini. Remember to change toggle to 3v on the board beforeconnecting to Arduino Pro Mini. 
+Also soldering is not required, just put FTDI pins in holes of Pro Mini and upload sketch:
+![IMG_3745](https://user-images.githubusercontent.com/109203/98669090-71b04f00-2383-11eb-8bd9-1ca3fa829193.jpeg)
+
+You can buy it here:
+
+    [Link1](https://www.aliexpress.com/item/1005001636675031.html?spm=a2g0o.productlist.0.0.382162fcwDbMcN&algo_pvid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67&algo_expid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67-1&btsid=0bb0623416050047155106819ed6a9&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
+    [Link2](https://www.aliexpress.com/item/32831177985.html?spm=a2g0o.productlist.0.0.382162fcwDbMcN&algo_pvid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67&algo_expid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67-5&btsid=0bb0623416050047155106819ed6a9&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
+    [Link3](https://www.aliexpress.com/item/4000308024512.html?spm=a2g0o.productlist.0.0.382162fcwDbMcN&algo_pvid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67&algo_expid=bcbd6b5a-d8f4-4580-876b-6e6965fb7b67-12&btsid=0bb0623416050047155106819ed6a9&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
 
 - LED lights. You can find LED lights that I used (12v. you can control any, but usually only 12v sold) by searching "1 Pair Truck Turn Indicators 12V" on aliexpress. I purchased 4 (2 for left and 2 for right side). You can buy it here:
-    https://www.aliexpress.com/item/4001028388076.html?spm=a2g0o.productlist.0.0.43454413XVxNj7&algo_pvid=8d6f320f-5e61-49a0-a128-c69a9eb959eb&algo_expid=8d6f320f-5e61-49a0-a128-c69a9eb959eb-2&btsid=0bb0623316050048266315715eb994&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
-    https://www.aliexpress.com/item/32800524061.html?spm=a2g0o.productlist.0.0.43454413XVxNj7&algo_pvid=8d6f320f-5e61-49a0-a128-c69a9eb959eb&algo_expid=8d6f320f-5e61-49a0-a128-c69a9eb959eb-6&btsid=0bb0623316050048266315715eb994&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
-    https://www.aliexpress.com/item/32799049355.html?spm=a2g0o.productlist.0.0.43454413XVxNj7&algo_pvid=8d6f320f-5e61-49a0-a128-c69a9eb959eb&algo_expid=8d6f320f-5e61-49a0-a128-c69a9eb959eb-7&btsid=0bb0623316050048266315715eb994&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
+    [Link1](https://www.aliexpress.com/item/4001028388076.html?spm=a2g0o.productlist.0.0.43454413XVxNj7&algo_pvid=8d6f320f-5e61-49a0-a128-c69a9eb959eb&algo_expid=8d6f320f-5e61-49a0-a128-c69a9eb959eb-2&btsid=0bb0623316050048266315715eb994&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
+    [Link2](https://www.aliexpress.com/item/32800524061.html?spm=a2g0o.productlist.0.0.43454413XVxNj7&algo_pvid=8d6f320f-5e61-49a0-a128-c69a9eb959eb&algo_expid=8d6f320f-5e61-49a0-a128-c69a9eb959eb-6&btsid=0bb0623316050048266315715eb994&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
+    [Link3](https://www.aliexpress.com/item/32799049355.html?spm=a2g0o.productlist.0.0.43454413XVxNj7&algo_pvid=8d6f320f-5e61-49a0-a128-c69a9eb959eb&algo_expid=8d6f320f-5e61-49a0-a128-c69a9eb959eb-7&btsid=0bb0623316050048266315715eb994&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
 
 - Two IRLB3034 mosfet transistors
 
