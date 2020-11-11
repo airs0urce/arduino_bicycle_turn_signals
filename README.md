@@ -32,6 +32,7 @@ You can buy it here:
 
 - Two IRLB3034 mosfet transistors
 - Two 10 kOhm and two 100 Ohm resistors.
+- 3.7v battery with overdischarge protection. Li-ion or Li-pol. If you want to charge it from USB, buy TP4056 charging module and see how to connect it to battery in manuals on internet (there is a lot of them), TP4056 can also work as protection for non-protected battery. I didn't add the module to the schematics because I use 18650 Li-ion battery with protection [like this](https://www.aliexpress.com/item/32848096612.html?spm=a2g0o.productlist.0.0.605a7ddfCeC9Vi&algo_pvid=d45e67fb-7d36-4111-bcbd-4c9b9e63c3d7&algo_expid=d45e67fb-7d36-4111-bcbd-4c9b9e63c3d7-0&btsid=0b0a555616050870679444122e0161&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_), I put it inide holder on bicycle [like this](https://www.aliexpress.com/item/4000859859685.html?spm=a2g0o.productlist.0.0.58b53707JqadDe&algo_pvid=af3bb6cd-739b-4ee4-adf4-5221dc8fb32c&algo_expid=af3bb6cd-739b-4ee4-adf4-5221dc8fb32c-0&btsid=0b0a555e16050871046346208ea516&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_) and I take it off to charge using external charger.
 
 You will need to remove power LED and voltage regulator from Arduino Pro Mini to save energy:
 https://www.iot-experiments.com/arduino-pro-mini-power-consumption/
