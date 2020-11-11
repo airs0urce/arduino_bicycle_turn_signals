@@ -1,7 +1,7 @@
 Arduino Bicycle Turn Signals
 -------------------------
 
-Arduino bicycle turns.
+Arduino bicycle turn signals.
 
 Schematics:
 -------------------------
