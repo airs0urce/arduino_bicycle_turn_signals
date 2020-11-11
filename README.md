@@ -1,4 +1,4 @@
-Arduino Bicycle Turns
+Arduino Bicycle Turn Signals
 -------------------------
 
 Arduino bicycle turns.
