@@ -40,8 +40,8 @@ This way it will almost not eat energy while sleeping until you press BTN_LEFT o
 
 Arduino must be powered using 3.7v battery (for example 18650, make sure battery is protected to make sure it's not overdischarged).
 
-While sleeping the project is using about 150uA. It's about 10 months on 1000mAh battery.
-While blinking the project is using 3mA current. About 14 days on 1000mAh battery.
+While sleeping the project is using about 150uA. It's about 10 months on 1000mAh battery.  
+While blinking the project is using 3mA current. About 14 days on 1000mAh battery.  
 So, arduino itself will eat just a little energy. LED lamps will be eating most energy.
 
 How it works
