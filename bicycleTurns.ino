@@ -90,7 +90,7 @@ void loop() {
 
   } else {
     state = 0;
-    //power.sleep(SLEEP_FOREVER);
+    power.sleep(SLEEP_FOREVER);
   }
 }
 
