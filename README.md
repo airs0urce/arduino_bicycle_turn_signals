@@ -47,6 +47,15 @@ So, arduino itself will eat just a little energy. LED lamps will be eating most 
 How it works
 -------------------------
 
+Press left button - turn on left led light or turn off left led light. 
+Press right button - turn on right led light or turn off right led light.
+
+If left button pressed when right led light blinking, it will stop right led and start left. 
+If left button pressed when left led light blinking, it will turn off left led light.
+The same logic for right turn button.
+
+
+
 https://www.youtube.com/watch?v=5mdGutMXXeE&feature=youtu.be
 
 
