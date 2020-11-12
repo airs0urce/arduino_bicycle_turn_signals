@@ -44,6 +44,8 @@ While sleeping the project is using about 150uA. It's about 10 months on 1000mAh
 While blinking the project is using 3mA current. About 14 days on 1000mAh battery.  
 So, arduino itself will eat just a little energy. LED lamps will be eating most energy.
 
+To compile the source, you will need LowPower library installed in arduino IDE: https://github.com/rocketscream/Low-Power
+
 How it works
 -------------------------
 
