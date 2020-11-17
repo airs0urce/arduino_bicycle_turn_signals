@@ -11,7 +11,8 @@ Known issues:
 Schematics:
 -------------------------
 
-![turns_bb](https://user-images.githubusercontent.com/109203/98668673-cd2e0d00-2382-11eb-9139-51e54b6c9164.png)
+![turns 2_bb](https://user-images.githubusercontent.com/109203/99435769-2da0e980-2943-11eb-8295-d2389be3a972.jpg)
+
 
 Components:
 -------------------------
