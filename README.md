@@ -3,6 +3,11 @@ Arduino Bicycle Turn Signals
 
 Arduino bicycle turn signals.
 
+Known issues:
+-------------------------
+
+- If you press button down and hold it more than 350ms before release - it's possbile that it will be handled like second button press. I suppose it happens because of contacts bouncing. Soon I want to try to add hardware filter for this based on resistor and capacitor. If it will be working good then I'll add optional components to the schematics for those who wants to resolve that issue.
+
 Schematics:
 -------------------------
 
@@ -44,7 +49,9 @@ While sleeping the project is using about 5uA. It's about 20 years on 1000mAh ba
 While blinking the project is using 3mA current. About 14 days on 1000mAh battery.  
 So, arduino itself will eat just a little energy. LED lamps will be eating most energy.
 
-To compile the source, you will need LowPower library installed in arduino IDE: https://github.com/rocketscream/Low-Power
+To compile the source, you will need libraries installed in Arduino IDE: 
+- LowPower: https://github.com/rocketscream/Low-Power (download source code and put everything to .../libraries/Low-Power/ folder)
+- MsTimer2: https://github.com/PaulStoffregen/MsTimer2 (download source code and put everything to .../libraries/MsTimer2/ folder)
 
 How it works
 -------------------------

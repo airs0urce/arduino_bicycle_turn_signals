@@ -1,183 +1,200 @@
 /*
 Use arduino pro mini 3v 8mhz
 
-Remove power LED and voltage regulator to save energy: https://www.iot-experiments.com/arduino-pro-mini-power-consumption/ 
-This way it will be working for months in sleep mode and waiting until you press
-BTN_LEFT or BTN_RIGHT.
-
-LowPower library required to compile the source: https://github.com/rocketscream/Low-Power
+Remove power LED and voltage regulator to save energy:
+https://www.iot-experiments.com/arduino-pro-mini-power-consumption/
+This way it will be working for months in sleep mode and waiting until you press left or right button.
 */
 #include "LowPower.h"
+#include "MsTimer2.h"
 
-#define BTN_LEFT 2  // button you press to enable blinling left turn
+#define BTN_LEFT 2 // button you press to enable blinling left turn
 #define BTN_RIGHT 3 // button you press to enable blinling right turn
-#define LED_LEFT 5  // MOSFET which controls left turn LED lamps
+
+#define LED_LEFT 5 // MOSFET which controls left turn LED lamps
 #define LED_RIGHT 6 // MOSFET which controls left turn LED lamps
 
-volatile unsigned long lastBtnPress = 0;
+#define SKIP_TICKS_UPPER 100 // how long to keep LED in "fully on" state while blinking
+#define SKIP_TICKS_LOWER 100 // how long to keep LED in "fully off" state while blinking
 
-byte state = 0;
-/* state values:
+#define SLEEP_INACTIVITY_MS 2000 // send arduino to sleep when LEDs are not blinking after N ms
+
+volatile byte state = 0;
+/*
+ * state values:
  * 0 - not blinking
  * 1 - blinking after pressed left
  * 2 - blinking after pressed right
 */
 
+void bothLedsOff() {
+  analogWrite(LED_LEFT, 0);
+  analogWrite(LED_RIGHT, 0);
+}
+
+unsigned int skipTicksUpper = SKIP_TICKS_UPPER;
+unsigned int skipTicksLower = SKIP_TICKS_LOWER;
+
+void ledsBlinkingHandler() {
+  static byte ledPwmValue = 0;
+  static bool ledPwmIncreasing = true;
+  static byte prevState = 0;
+
+  if (prevState != state) {
+    ledPwmValue = 0;
+    ledPwmIncreasing = true;
+    skipTicksUpper = SKIP_TICKS_UPPER;
+    skipTicksLower = SKIP_TICKS_LOWER;
+    bothLedsOff();
+  }
+      
+  switch (state) {
+    case 1:
+    case 2:
+      if (ledPwmValue == 255 && skipTicksUpper > 0) {
+        skipTicksUpper--;
+        return;
+      }
+      if (!ledPwmIncreasing && ledPwmValue == 0 && skipTicksLower > 0) {
+        skipTicksLower--;
+        return;
+      }
+      skipTicksUpper = SKIP_TICKS_UPPER;
+      skipTicksLower = SKIP_TICKS_LOWER;
+      
+      if (ledPwmIncreasing) {
+        if (ledPwmValue < 255) {
+          ledPwmValue += 1;
+        } else {
+          ledPwmIncreasing = false;  
+        }
+      } else {
+        if (ledPwmValue > 0) {
+          ledPwmValue -= 1;
+        } else {
+          ledPwmIncreasing = true;
+        }
+      }
+      if (state == 1) {
+        analogWrite(LED_LEFT, ledPwmValue);
+      } else {
+        analogWrite(LED_RIGHT, ledPwmValue);
+      }
+      
+      break;
+  } 
+  prevState = state;
+}
+
 void setup() {
   Serial.begin(9600);
-
+  
   pinMode(BTN_LEFT, INPUT_PULLUP);
   pinMode(BTN_RIGHT, INPUT_PULLUP);
-
+  
   pinMode(LED_LEFT, OUTPUT);
   pinMode(LED_RIGHT, OUTPUT);
 
-  // sleep
+  attachInterrupt(digitalPinToInterrupt(BTN_LEFT), isrBtnLeftChangeHandler, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(BTN_RIGHT), isrBtnRightChangeHandler, CHANGE);
+  // sleep state
   state = 0;
-  goSleep();
+
+  MsTimer2::set(1, ledsBlinkingHandler);
+  MsTimer2::start();
 }
 
-unsigned long lastBtnPressOnLoopStart = 0;
-unsigned long loopActivityLast = 0;
+void loop() {  
+  handleInactivitySleep();  
+}
 
-void loop() {
-  // Serial.println("CHECK BUTTONS PRESSED");
-
-  if (millis() - loopActivityLast > 2000) {
-    /* when loop is running more than 2 seconds
-    *  and user doesn't press buttons let's send arduino to sleep.
-    *  Why do we need this? It's possible that after calling goSleep() fucntion
-    *  we will get arduino running instead os sleeping. It can happen in
-    *  case when you pressed button down and then released it after more
-    *  than 250ms (we have protection for 250ms in side goSleep).
-    *  So, when you release the button, contact bouncing triggers
-    *  interruption and arduino wakes up because thinks you pressed button.
-    *  Later in loop we check if button pressed but no buttons pressed because
-    *  you actually just released the button and because of this arduino can
-    *  continue running forever and waste energy. For this case we have this
-    * handling
-    *  to force arduino sleeping even if contact bouncing broke our logic.
-    */
+unsigned long stateZeroFromMillis = 0;
+void handleInactivitySleep() {
+  // make sure we sleep in case of SLEEP_INACTIVITY_MS of inactivity
+  if (state == 0) {
+    if (stateZeroFromMillis == 0) {
+      stateZeroFromMillis = millis();
+    }
+  } else {
+    stateZeroFromMillis = 0;
+  }
+  if (stateZeroFromMillis != 0 && millis() - stateZeroFromMillis >= SLEEP_INACTIVITY_MS) {
+    stateZeroFromMillis = 0;
     goSleep();
   }
+}
 
-  lastBtnPressOnLoopStart = lastBtnPress;
-  if (isBtnPressed(BTN_LEFT)) {
-    loopActivityLast = millis();
-    if (state == 1) { // now blinking after pressed left
-      // stop left blinking and go sleep
+void handleBtnLeftPress() {
+    if (state == 1) { 
+      // now: blinking after pressed left
+      // we will: stop left blinking and go sleep
       state = 0;
-      goSleep();
-      loopActivityLast = millis();
-    } else if (state == 2) { // now blinking after pressed right
-      // stop blinking right and start left
+      ledsBlinkingHandler();
+    } else if (state == 2) { 
+      // now: blinking after pressed right
+      // we will: stop blinking right and start left
       state = 1;
-      blinkTurn(LED_LEFT);
-    } else { // now 0 - start blinking left
+    } else { 
+      // now: turn lights disabled
+      // we will: start blinking left
       state = 1;
-      blinkTurn(LED_LEFT);
     }
-  } else if (isBtnPressed(BTN_RIGHT)) {
-    loopActivityLast = millis();
-    if (state == 2) { // now blinking after pressed right
-      // stop right blinking and go sleep
-      state = 0;
-      goSleep();
-      loopActivityLast = millis();
-    } else if (state == 1) { // now blinking after pressed left
-      // stop blinking left and start right
-      state = 2;
-      blinkTurn(LED_RIGHT);
-    } else { // now 0 - start blinking right
-      state = 2;
-      blinkTurn(LED_RIGHT);
-    }
+}
+
+void handleBtnRightPress() {
+  if (state == 2) { 
+    // now: blinking after pressed right
+    // we will: stop right blinking and go sleep
+    state = 0;
+    ledsBlinkingHandler();
+  } else if (state == 1) { 
+    // now: blinking after pressed left
+    // we will: stop blinking left and start right
+    state = 2;
+  } else { 
+    // now: turn lights disabled
+    // we will: start blinking right
+    state = 2;
   }
 }
+
 
 void goSleep() {
-  // Serial.println("GOING TO SLEEP");Serial.flush();
-
-  // remove interruptions to make sure buttons bouces will not wake up
-  // the microcontroller on moment when you remove finger from pressed button
-  detachInterrupt(digitalPinToInterrupt(BTN_LEFT));
-  detachInterrupt(digitalPinToInterrupt(BTN_RIGHT));
-  LowPower.powerDown(SLEEP_250MS, ADC_OFF, BOD_OFF);
-
-  // ok, now let's enable interruptions and go to sleep
-  attachInterrupt(digitalPinToInterrupt(BTN_LEFT), isrHandler, FALLING);
-  attachInterrupt(digitalPinToInterrupt(BTN_RIGHT), isrHandler, FALLING);
+  //Serial.println("GOING TO SLEEP");Serial.flush();
+  
+  MsTimer2::stop();
+  bothLedsOff();
+  state = 0;
   LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
-
-  // Serial.println("AWAKE");Serial.flush();
+  MsTimer2::start();
+    
+  //Serial.println("AWAKE");Serial.flush();
 }
 
-bool isBtnPressed(byte btnPin) {
-  if (digitalRead(btnPin) == LOW) {
-    delay(10);
-    if (digitalRead(btnPin) == LOW) {
-      return true;
-    }
-  }
-  return false;
-}
 
-void isrHandler() {
-  if (millis() - lastBtnPress > 300) {
-    lastBtnPress = millis();
+void isrBtnLeftChangeHandler() {
+  static unsigned long lastPress = 0;
+  if (millis() - lastPress < 350) {
+    lastPress = millis();
+    return;
   }
-}
+  lastPress = millis();
 
-void blinkTurn(byte ledPin) {
-  bool finished;
-  while (true) {
-    finished = ledOn(ledPin);
-    if (!finished) {
-      break;
-    } else {
-      delay(120);
-      finished = ledOff(ledPin);
-      if (!finished) {
-        break;
-      }
-      delay(100);
-    }
+  if (digitalRead(BTN_LEFT) == LOW) {
+  //Serial.println("Interrupt LEFT PRESS HANDLED");Serial.flush();
+    handleBtnLeftPress();
   }
 }
-
-// returns: true - finished, false - interrupted
-bool ledOn(byte led) {
-  for (int i = 0; i <= 255; i += 1) {
-    if (btnPressedAgain()) {
-      analogWrite(led, 0);
-      return false;
-    }
-    analogWrite(led, i);
-    delay(1);
+void isrBtnRightChangeHandler() {
+  static unsigned long lastPress = 0;
+  if (millis() - lastPress < 350) {
+    lastPress = millis();
+    return;
   }
+  lastPress = millis();
 
-  analogWrite(led, 255);
-  return true;
-}
-
-// returns: true - finished, false - interrupted
-bool ledOff(byte led) {
-  for (int i = 255; i >= 0; i -= 1) {
-    if (btnPressedAgain()) {
-      analogWrite(led, 0);
-      return false;
-    }
-    analogWrite(led, i);
-    delay(1);
+  if (digitalRead(BTN_RIGHT) == LOW) {
+  //Serial.println("Interrupt RIGHT PRESS HANDLED");Serial.flush();
+    handleBtnRightPress();
   }
-  analogWrite(led, 0);
-  return true;
-}
-
-bool btnPressedAgain() {
-  bool anyBtnPressed = isBtnPressed(BTN_LEFT) || isBtnPressed(BTN_RIGHT);
-  if (lastBtnPress != lastBtnPressOnLoopStart && anyBtnPressed) {
-    return true;
-  }
-  return false;
 }
