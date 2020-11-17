@@ -3,6 +3,19 @@ Arduino Bicycle Turn Signals
 
 Arduino bicycle turn signals.
 
+How it works
+-------------------------
+
+Press left button - turn on left led light or turn off left led light.  
+Press right button - turn on right led light or turn off right led light.  
+
+If left button pressed when right led light blinking, it will stop right led and start left.  
+If left button pressed when left led light blinking, it will turn off left led light.
+The same logic for right turn button.
+
+https://www.youtube.com/watch?v=5mdGutMXXeE&feature=youtu.be
+
+
 Known issues:
 -------------------------
 
@@ -53,20 +66,5 @@ So, arduino itself will eat just a little energy. LED lamps will be eating most 
 To compile the source, you will need libraries installed in Arduino IDE: 
 - LowPower: https://github.com/rocketscream/Low-Power (download source code and put everything to .../libraries/Low-Power/ folder)
 - MsTimer2: https://github.com/PaulStoffregen/MsTimer2 (download source code and put everything to .../libraries/MsTimer2/ folder)
-
-How it works
--------------------------
-
-Press left button - turn on left led light or turn off left led light.  
-Press right button - turn on right led light or turn off right led light.  
-
-If left button pressed when right led light blinking, it will stop right led and start left.  
-If left button pressed when left led light blinking, it will turn off left led light.
-The same logic for right turn button.
-
-
-
-https://www.youtube.com/watch?v=5mdGutMXXeE&feature=youtu.be
-
 
 
