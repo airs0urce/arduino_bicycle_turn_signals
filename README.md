@@ -34,7 +34,7 @@ Components:
 
 - "FTDI FT232RL USB To TTL" to upload code to Arduino Pro Mini. Remember to change toggle to 3v on the board before connecting to Arduino Pro Mini. 
 Also soldering is not required, just put FTDI pins in holes of Pro Mini and upload the sketch (BicycleTurnSignals.ino):
-![IMG_3745](https://user-images.githubusercontent.com/109203/98669690-4712c600-2384-11eb-8d3c-eab1f79b2edf.png)
+<img width="249" alt="Screen Shot 2020-11-19 at 12 13 53 AM" src="https://user-images.githubusercontent.com/109203/99563707-1e31a700-29fc-11eb-87d0-2210430bb450.png">
 
 
 You can buy it here:
@@ -68,8 +68,9 @@ Btw, I use 12v battery made from 3 protected 18650 batteries connected in series
 
 Here are photos. The red connector on second photo used to power arduino and wires from the connector go to one of those 3 batteries, so this way I get 3.7v for arduino. 
 
-<img width="214" alt="Screen Shot 2020-11-19 at 12 12 32 AM" src="https://user-images.githubusercontent.com/109203/99563550-f2162600-29fb-11eb-8444-8c597cf70b67.png">
 <img width="283" alt="Screen Shot 2020-11-19 at 12 12 14 AM" src="https://user-images.githubusercontent.com/109203/99563568-f8a49d80-29fb-11eb-883b-296069e90360.png">
+<img width="214" alt="Screen Shot 2020-11-19 at 12 12 32 AM" src="https://user-images.githubusercontent.com/109203/99563550-f2162600-29fb-11eb-8444-8c597cf70b67.png">
+
 
 To compile the source, you will need libraries installed in Arduino IDE: 
 - LowPower: https://github.com/rocketscream/Low-Power (download source code and put everything to .../libraries/Low-Power/ folder)
