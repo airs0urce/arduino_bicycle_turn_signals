@@ -79,7 +79,7 @@ To compile the source, you will need libraries installed in Arduino IDE:
 
 For info: 
 - I connected LEDs to the bicycle using cable Ties and hot glue gun. This way they connected well enough to forget about fixing it later :)
-- To connect turn buttons to handle I: put buttons on rectangular plastic pad, wrapper with heat-shrink tubing and used hot glue connected that to velcro strap. Then used the strap to connect buttons to the handle:
+- To connect turn buttons to handle I: put buttons on rectangular plastic pad, wrapped with heat-shrink tubing and used hot glue connected that to velcro strap. Then used the strap to connect buttons to the handle:
 
 <img width="508" alt="Screen Shot 2020-11-19 at 12 11 18 AM" src="https://user-images.githubusercontent.com/109203/99563376-c5faa500-29fb-11eb-8e94-4ad6ca733fb5.png">
 
