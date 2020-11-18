@@ -66,6 +66,10 @@ So, arduino itself will eat just a little energy. LED lamps will be eating most 
 Btw, I use 12v battery made from 3 protected 18650 batteries connected in series and I power arduino itself from one one of those 3 batteries. I don't worry about disbalance between 3 batteries as arduino eats just a little of power. So this way you don't need second 3.7v battery, but can use one 12v battery made from 3). here is holder with 3 slots that I use:
 [Link1](https://a.aliexpress.com/_9hQcJa), [Link2](https://a.aliexpress.com/_9fn2xK)
 
+Here are photos. The red connector on second photo used to power arduino and wires from the connector go to one of those 3 batteries, so this way I get 3.7v for arduino. 
+
+![68627486-7620-4644-9E33-30D18E1235B2](https://user-images.githubusercontent.com/109203/99464691-47eebd80-296b-11eb-9dbf-3b8313a40e22.jpeg)
+![D02D748B-B278-40F6-89B7-A35B7D528ACC](https://user-images.githubusercontent.com/109203/99464699-4b824480-296b-11eb-8328-3547e995b6f8.jpeg)
 
 
 To compile the source, you will need libraries installed in Arduino IDE: 
