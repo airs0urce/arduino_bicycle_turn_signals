@@ -77,3 +77,4 @@ To compile the source, you will need libraries installed in Arduino IDE:
 - MsTimer2: https://github.com/PaulStoffregen/MsTimer2 (download source code and put everything to .../libraries/MsTimer2/ folder)
 
 
+For info: I connected LEDs to the bicycle using cable Ties and hot glue gun. This way they connected well enough to forget about fixing it later :)
