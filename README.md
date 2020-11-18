@@ -81,4 +81,5 @@ For info:
 - I connected LEDs to the bicycle using cable Ties and hot glue gun. This way they connected well enough to forget about fixing it later :)
 - To connect turn buttons to handle I: put buttons on rectangular plastic pad, wrapper with heat-shrink tubing and used hot glue connected that to velcro strap. Then used the strap to connect buttons to the handle:
 
-![IMG_3826](https://user-images.githubusercontent.com/109203/99563224-9f3c6e80-29fb-11eb-8f9e-ef15a79cf2db.jpeg)
+<img width="508" alt="Screen Shot 2020-11-19 at 12 11 18 AM" src="https://user-images.githubusercontent.com/109203/99563376-c5faa500-29fb-11eb-8e94-4ad6ca733fb5.png">
+
