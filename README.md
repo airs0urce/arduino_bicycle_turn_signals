@@ -68,8 +68,8 @@ https://www.iot-experiments.com/arduino-pro-mini-power-consumption/
 This way it will almost not eat energy while sleeping until you press BTN_LEFT or BTN_RIGHT.
 
 While sleeping the project is using about 5uA. It's about 20 years on 1000mAh battery, if I calculated correct :).  
-While blinking the project is using 3mA current. About 14 days on 1000mAh battery.  
-So, arduino itself will eat just a little energy. LED lamps will be eating most energy.
+While blinking the project is using 3mA current. About 28 days on 2800mAh battery.  
+So, arduino itself will eat just a little energy. LED lamps will be eating most energy, but I didn't calculate how much exactly, honestly not sure how to calculate it because while blinking it uses PWM to change brightness and on each moment it's using different current, but I can tell that one LED uses 10mA while connected to 12v source, two of them use 20mA, let's say because of PWM and blinking two LEDs use about 10mA, in this case 2800mAh will be enough for 280 hours or ~11 days + arduino eats energy of one of those 3 batteries, so I think that 3 batteries 18650 will be enough (remember about self-discharge of batteries) to blink the lights for about 7 days or 168 hours without stop. 
 
 Here are photos. The red connector on second photo used to power arduino and wires from the connector go to one of those 3 batteries, so this way I get 3.7v for arduino. 
 
