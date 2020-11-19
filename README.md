@@ -24,7 +24,8 @@ Known issues:
 Schematics:
 -------------------------
 
-![turns 2_bb](https://user-images.githubusercontent.com/109203/99435769-2da0e980-2943-11eb-8295-d2389be3a972.jpg)
+![BicycleTurnsPhotoNew](https://user-images.githubusercontent.com/109203/99712281-683a8b80-2ad5-11eb-8423-5c35d6ec4cf8.jpg)
+
 
 
 Components:
