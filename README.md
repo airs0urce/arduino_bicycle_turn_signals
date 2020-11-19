@@ -52,20 +52,24 @@ You can buy the LEDs here:
 
 - Two IRLB3034 mosfet transistors
 - Two 10 kOhm and two 100 Ohm resistors.
-- 3.7v battery with overdischarge protection. Any Li-ion or Li-pol battery fits perfectly. If you want to charge it from USB, buy TP4056 charging module and see how to connect it to battery in manuals on internet (there is a lot of them), TP4056 can also work as protection for non-protected battery. I didn't add the module to the schematics because I use 18650 Li-ion battery with protection [like this](https://www.aliexpress.com/item/32848096612.html?spm=a2g0o.productlist.0.0.605a7ddfCeC9Vi&algo_pvid=d45e67fb-7d36-4111-bcbd-4c9b9e63c3d7&algo_expid=d45e67fb-7d36-4111-bcbd-4c9b9e63c3d7-0&btsid=0b0a555616050870679444122e0161&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_), I put it inide holder on bicycle [like this](https://www.aliexpress.com/item/4000859859685.html?spm=a2g0o.productlist.0.0.58b53707JqadDe&algo_pvid=af3bb6cd-739b-4ee4-adf4-5221dc8fb32c&algo_expid=af3bb6cd-739b-4ee4-adf4-5221dc8fb32c-0&btsid=0b0a555e16050871046346208ea516&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_) and I take it off to charge using external charger.
+- 3 batteries 3.7v with protection (as we need to be sure batteries will not be overdischarged). Any Li-ion or Li-pol battery fits perfectly, but make sure there is overdischarge protection, for example [these batteries are ok](https://www.aliexpress.com/item/32848096612.html?spm=a2g0o.productlist.0.0.605a7ddfCeC9Vi&algo_pvid=d45e67fb-7d36-4111-bcbd-4c9b9e63c3d7&algo_expid=d45e67fb-7d36-4111-bcbd-4c9b9e63c3d7-0&btsid=0b0a555616050870679444122e0161&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_),  
+I put batteries inside holder on bicycle [like this](https://www.aliexpress.com/item/4000859859685.html?spm=a2g0o.productlist.0.0.58b53707JqadDe&algo_pvid=af3bb6cd-739b-4ee4-adf4-5221dc8fb32c&algo_expid=af3bb6cd-739b-4ee4-adf4-5221dc8fb32c-0&btsid=0b0a555e16050871046346208ea516&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)  
+and when I need to charge them I take them out and charge using external charger.
+
+I use 12v battery made from 3 protected 18650 batteries connected in series and I power arduino from one one of those 3 batteries
+I don't worry about disbalance between 3 batteries as arduino eats just a little of power. 
+Here is battery holder with 3 slots that I used:
+[Link1](https://a.aliexpress.com/_9hQcJa), [Link2](https://a.aliexpress.com/_9fn2xK)
+
+For turn lights 3 of 18650 batteries sounds like overkill (2800mAh, 12v), but I also connect 12v horn to same battery and later I could connect something more. If you will only use for turn signals you can thing about another setup of batteries. But it's easier to use 18650 as this is most popular format and it's easy to find holder for the batteries and other stuff.
 
 You will need to remove power LED and voltage regulator from Arduino Pro Mini to save energy:
 https://www.iot-experiments.com/arduino-pro-mini-power-consumption/
 This way it will almost not eat energy while sleeping until you press BTN_LEFT or BTN_RIGHT.
 
-Arduino must be powered using 3.7v battery (for example 18650, make sure battery is protected to make sure it's not overdischarged).
-
 While sleeping the project is using about 5uA. It's about 20 years on 1000mAh battery, if I calculated correct :).  
 While blinking the project is using 3mA current. About 14 days on 1000mAh battery.  
 So, arduino itself will eat just a little energy. LED lamps will be eating most energy.
-
-Btw, I use 12v battery made from 3 protected 18650 batteries connected in series and I power arduino itself from one one of those 3 batteries. I don't worry about disbalance between 3 batteries as arduino eats just a little of power. So this way you don't need second 3.7v battery, but can use one 12v battery made from 3). here is holder with 3 slots that I use:
-[Link1](https://a.aliexpress.com/_9hQcJa), [Link2](https://a.aliexpress.com/_9fn2xK)
 
 Here are photos. The red connector on second photo used to power arduino and wires from the connector go to one of those 3 batteries, so this way I get 3.7v for arduino. 
 
