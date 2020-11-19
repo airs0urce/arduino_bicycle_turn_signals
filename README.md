@@ -32,7 +32,8 @@ Power consumption:
 
 While sleeping the project is using about 5uA on 3.7v. It's about 56 years on 2800mAh battery, if I calculated correct. But actually it's not possible because li-ion battery will be self-discharged after couple years :)
 
-While blinking the project is using 3mA current. About 28 days on 2800mAh battery.  
+While awake and blinking the arduino board uses 3mA current. About 28 days on 2800mAh battery.  
+
 So, arduino itself will eat just a little energy. LED lamps will be eating most energy, but I didn't calculate how much exactly, honestly not sure how to calculate it because while blinking it uses PWM to change brightness and on each moment it's using different current, but I can tell that one LED uses 10mA while connected to 12v source, two of them use 20mA, let's say because of PWM and blinking two LEDs use about 10mA, in this case 2800mAh will be enough for 280 hours or ~11 days + arduino eats energy of one of those 3 batteries, so I think that 3 batteries 18650 will be enough (remember about self-discharge of batteries) to blink the lights for about 8 days without stop. 
 
 Components:
