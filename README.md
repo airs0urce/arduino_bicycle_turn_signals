@@ -27,6 +27,13 @@ Schematics:
 ![BicycleTurnsPhotoNew](https://user-images.githubusercontent.com/109203/99712281-683a8b80-2ad5-11eb-8423-5c35d6ec4cf8.jpg)
 
 
+Power consumption:
+-------------------------
+
+While sleeping the project is using about 5uA on 3.7v. It's about 56 years on 2800mAh battery, if I calculated correct. But actually it's not possible because li-ion battery will be self-discharged after couple years :)
+
+While blinking the project is using 3mA current. About 28 days on 2800mAh battery.  
+So, arduino itself will eat just a little energy. LED lamps will be eating most energy, but I didn't calculate how much exactly, honestly not sure how to calculate it because while blinking it uses PWM to change brightness and on each moment it's using different current, but I can tell that one LED uses 10mA while connected to 12v source, two of them use 20mA, let's say because of PWM and blinking two LEDs use about 10mA, in this case 2800mAh will be enough for 280 hours or ~11 days + arduino eats energy of one of those 3 batteries, so I think that 3 batteries 18650 will be enough (remember about self-discharge of batteries) to blink the lights for about 8 days without stop. 
 
 Components:
 -------------------------
@@ -66,15 +73,6 @@ For turn lights 3 of 18650 batteries sounds like overkill (2800mAh, 12v), but I 
 You will need to remove power LED and voltage regulator from Arduino Pro Mini to save energy:
 https://www.iot-experiments.com/arduino-pro-mini-power-consumption/
 This way it will almost not eat energy while sleeping until you press BTN_LEFT or BTN_RIGHT.
-
-While sleeping the project is using about 5uA. It's about 20 years on 1000mAh battery, if I calculated correct :).  
-While blinking the project is using 3mA current. About 28 days on 2800mAh battery.  
-So, arduino itself will eat just a little energy. LED lamps will be eating most energy, but I didn't calculate how much exactly, honestly not sure how to calculate it because while blinking it uses PWM to change brightness and on each moment it's using different current, but I can tell that one LED uses 10mA while connected to 12v source, two of them use 20mA, let's say because of PWM and blinking two LEDs use about 10mA, in this case 2800mAh will be enough for 280 hours or ~11 days + arduino eats energy of one of those 3 batteries, so I think that 3 batteries 18650 will be enough (remember about self-discharge of batteries) to blink the lights for about 7 days or 168 hours without stop. 
-
-Here are photos. The red connector on second photo used to power arduino and wires from the connector go to one of those 3 batteries, so this way I get 3.7v for arduino. 
-
-<img width="283" alt="Screen Shot 2020-11-19 at 12 12 14 AM" src="https://user-images.githubusercontent.com/109203/99563568-f8a49d80-29fb-11eb-883b-296069e90360.png">
-<img width="214" alt="Screen Shot 2020-11-19 at 12 12 32 AM" src="https://user-images.githubusercontent.com/109203/99563550-f2162600-29fb-11eb-8444-8c597cf70b67.png">
 
 
 To compile the source, you will need libraries installed in Arduino IDE: 
