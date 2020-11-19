@@ -10,7 +10,7 @@ Press left button - turn on left led light or turn off left led light.
 Press right button - turn on right led light or turn off right led light.  
 
 If left button pressed when right led light blinking, it will stop right led and start left.  
-If left button pressed when left led light blinking, it will turn off left led light.
+If right button pressed when left led light blinking, it will turn off left led light.
 The same logic for right turn button.
 
 Video: https://www.youtube.com/watch?v=uAnk8ksx8WE
