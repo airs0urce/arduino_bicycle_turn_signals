@@ -69,7 +69,7 @@ I don't worry about disbalance between 3 batteries as arduino eats just a little
 Here is battery holder with 3 slots that I used:
 [Link1](https://a.aliexpress.com/_9hQcJa), [Link2](https://a.aliexpress.com/_9fn2xK)
 
-For turn lights 3 of 18650 batteries sounds like overkill (2800mAh, 12v), but I also connect 12v horn to same battery and later I could connect something more. If you will only use for turn signals you can thing about another setup of batteries. But it's easier to use 18650 as this is most popular format and it's easy to find holder for the batteries and other stuff.
+For turn lights 3 of 18650 batteries sounds like overkill (2800mAh, 12v), but I also connect 12v horn to same battery and later I could connect something more. If you will only use for turn signals you can think about connecting batteries with less capacity. But it's easier to use 18650 as this is most popular format and it's easy to find holder for the batteries and other stuff.
 
 You will need to remove power LED and voltage regulator from Arduino Pro Mini to save energy:
 https://www.iot-experiments.com/arduino-pro-mini-power-consumption/
