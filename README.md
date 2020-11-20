@@ -73,7 +73,7 @@ For turn lights 3 of 18650 batteries sounds like overkill (2800mAh, 12v), but I 
 
 You will need to remove power LED and voltage regulator from Arduino Pro Mini to save energy:
 https://www.iot-experiments.com/arduino-pro-mini-power-consumption/
-This way it will almost not eat energy while sleeping until you press BTN_LEFT or BTN_RIGHT.
+This way it will almost not eat energy while sleeping until you press left and right turn button.
 
 
 To compile the source, you will need libraries installed in Arduino IDE: 
