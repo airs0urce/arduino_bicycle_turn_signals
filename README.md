@@ -19,7 +19,8 @@ Video2: https://youtu.be/fiToTopHJI8
 Schematics:
 -------------------------
 
-![schematics](https://user-images.githubusercontent.com/109203/100537482-964d6780-325b-11eb-8eef-fff4113dacc4.jpg)
+![schematics](https://user-images.githubusercontent.com/109203/100538630-75891000-3263-11eb-8c73-5ab015445819.jpg)
+
 
 Note about capacitors on buttons:
 -------------------------
