@@ -24,7 +24,7 @@ Known issues:
 Schematics:
 -------------------------
 
-![BicycleTurnsPhotoNew](https://user-images.githubusercontent.com/109203/99712281-683a8b80-2ad5-11eb-8423-5c35d6ec4cf8.jpg)
+![schematics](https://user-images.githubusercontent.com/109203/100537482-964d6780-325b-11eb-8eef-fff4113dacc4.jpg)
 
 
 Power consumption:
