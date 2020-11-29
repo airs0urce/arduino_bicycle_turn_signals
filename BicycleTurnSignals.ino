@@ -14,17 +14,21 @@ This way it will be working for months in sleep mode and waiting until you press
 #define LED_LEFT 5 // MOSFET which controls left turn LED lamps
 #define LED_RIGHT 6 // MOSFET which controls left turn LED lamps
 
-#define SKIP_TICKS_UPPER 100 // how long to keep LED in "fully on" state while blinking
-#define SKIP_TICKS_LOWER 100 // how long to keep LED in "fully off" state while blinking
+#define SKIP_TICKS_UPPER 100 // how long to keep LED in "fully on" state while turn light blinks
+#define SKIP_TICKS_LOWER 100 // how long to keep LED in "fully off" state while turn light blinks
 
 #define SLEEP_INACTIVITY_MS 2000 // send arduino to sleep when LEDs are not blinking after N ms
+
+#define DEBOUNCE_DELAY_MS 0 // Possible values:
+                            // 0 - If you added capacitors on buttons. 
+                            // 350 - if no capacitors installed on turn buttons (read README.md about the capacitors).
 
 volatile byte state = 0;
 /*
  * state values:
- * 0 - not blinking
- * 1 - blinking after pressed left
- * 2 - blinking after pressed right
+ * 0 - all light arre off
+ * 1 - Left turn light. Blinking after pressed left
+ * 2 - Right turn light. Blinking after pressed right.
 */
 
 void bothLedsOff() {
@@ -125,36 +129,45 @@ void handleInactivitySleep() {
 }
 
 void handleBtnLeftPress() {
-    if (state == 1) { 
+  switch (state) {
+    case 0:    
+      // now: turn lights disabled
+      // we will: start blinking left
+      state = 1;
+      break;
+    case 1:
       // now: blinking after pressed left
       // we will: stop left blinking and go sleep
       state = 0;
       ledsBlinkingHandler();
-    } else if (state == 2) { 
+      break;
+    case 2:
       // now: blinking after pressed right
       // we will: stop blinking right and start left
       state = 1;
-    } else { 
-      // now: turn lights disabled
-      // we will: start blinking left
-      state = 1;
-    }
+      break;
+  }
 }
 
+
 void handleBtnRightPress() {
-  if (state == 2) { 
-    // now: blinking after pressed right
-    // we will: stop right blinking and go sleep
-    state = 0;
-    ledsBlinkingHandler();
-  } else if (state == 1) { 
-    // now: blinking after pressed left
-    // we will: stop blinking left and start right
-    state = 2;
-  } else { 
-    // now: turn lights disabled
-    // we will: start blinking right
-    state = 2;
+  switch (state) {
+    case 0:    
+      // now: turn lights disabled
+      // we will: start blinking right
+      state = 2;
+      break;
+    case 1:
+      // now: blinking after pressed left
+      // we will: stop blinking left and start right
+      state = 2;
+      break;
+    case 2:
+      // now: blinking after pressed right
+      // we will: stop right blinking
+      state = 0;
+      ledsBlinkingHandler();
+      break;
   }
 }
 
@@ -174,7 +187,7 @@ void goSleep() {
 
 void isrBtnLeftChangeHandler() {
   static unsigned long lastPress = 0;
-  if (millis() - lastPress < 350) {
+  if (millis() - lastPress < DEBOUNCE_DELAY_MS) {
     lastPress = millis();
     return;
   }
@@ -187,7 +200,7 @@ void isrBtnLeftChangeHandler() {
 }
 void isrBtnRightChangeHandler() {
   static unsigned long lastPress = 0;
-  if (millis() - lastPress < 350) {
+  if (millis() - lastPress < DEBOUNCE_DELAY_MS) {
     lastPress = millis();
     return;
   }

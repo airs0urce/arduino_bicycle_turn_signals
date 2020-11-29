@@ -13,19 +13,26 @@ If left button pressed when right led light blinking, it will stop right led and
 If right button pressed when left led light blinking, it will turn off left led light.
 The same logic for right turn button.
 
-Video: https://www.youtube.com/watch?v=uAnk8ksx8WE
-
-
-Known issues:
--------------------------
-
-- If you press button down and hold it more than 350ms before release - it's possbile that it will be handled like second button press. I suppose it happens because of contacts bouncing. Soon I want to try to add hardware filter for this based on resistor and capacitor. If it will be working good then I'll add optional components to the schematics for those who wants to resolve that issue.
+Video1: https://youtu.be/uAnk8ksx8WE
+Video2: https://youtu.be/fiToTopHJI8
 
 Schematics:
 -------------------------
 
 ![schematics](https://user-images.githubusercontent.com/109203/100537482-964d6780-325b-11eb-8eef-fff4113dacc4.jpg)
 
+Note about capacitors on buttons:
+-------------------------
+
+In "Components" section below you can see "Two 100nF ceramic capacitors". In Schematics I marked them as C1 and C2.
+These capacitors not mandatory but strongly recommended. 
+
+Optionally you can use the schematics without those two capacitors if you don't have any. 
+In this case you also need to change value of DEBOUNCE_DELAY_MS constant from 0 to 350, this is required to handle Contact Bounce issue (you can read about it on internet).
+
+Two downsides of removing the capacitors: 
+1) If you press turn button down and hold it more than 350ms before release - it's possbile that it will be handled like second button press because contacts bouncing as we ignore false presses only for 350ms.
+2) Because we hav eto ignore presses for 350ms after it happened, there is another issue as result of the first one: you will not be able to press buttons more often that once per 350ms, presses will be ignored.
 
 Power consumption:
 -------------------------
@@ -60,6 +67,7 @@ You can buy the LEDs here:
 
 - Two IRLB3034 mosfet transistors
 - Two 10 kOhm and two 100 Ohm resistors.
+- Two 100nF ceramic capacitors (or 0.1uF, which is same). Not mandatory but strongly recommended (read "Note about capacitors on buttons" above). <img width="227" alt="Screen Shot 2020-11-29 at 3 36 54 PM" src="https://user-images.githubusercontent.com/109203/100538338-b8e27f00-3261-11eb-971a-6528789842af.png">
 - 3 batteries 3.7v with protection (as we need to be sure batteries will not be overdischarged). Any Li-ion or Li-pol battery fits perfectly, but make sure there is overdischarge protection, for example [these batteries are ok](https://www.aliexpress.com/item/32848096612.html?spm=a2g0o.productlist.0.0.605a7ddfCeC9Vi&algo_pvid=d45e67fb-7d36-4111-bcbd-4c9b9e63c3d7&algo_expid=d45e67fb-7d36-4111-bcbd-4c9b9e63c3d7-0&btsid=0b0a555616050870679444122e0161&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_),  
 I put batteries inside holder on bicycle [like this](https://www.aliexpress.com/item/4000859859685.html?spm=a2g0o.productlist.0.0.58b53707JqadDe&algo_pvid=af3bb6cd-739b-4ee4-adf4-5221dc8fb32c&algo_expid=af3bb6cd-739b-4ee4-adf4-5221dc8fb32c-0&btsid=0b0a555e16050871046346208ea516&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)  
 and when I need to charge them I take them out and charge using external charger.
