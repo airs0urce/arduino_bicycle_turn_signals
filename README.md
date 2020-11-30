@@ -13,7 +13,7 @@ If left button pressed when right led light blinking, it will stop right led and
 If right button pressed when left led light blinking, it will turn off left led light.
 The same logic for right turn button.
 
-Video1: https://youtu.be/uAnk8ksx8WE
+Video1: https://youtu.be/uAnk8ksx8WE  
 Video2: https://youtu.be/fiToTopHJI8
 
 Schematics:
