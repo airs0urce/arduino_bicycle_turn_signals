@@ -19,8 +19,8 @@ This way it will be working for months in sleep mode and waiting until you press
 
 #define SLEEP_INACTIVITY_MS 2000 // send arduino to sleep when LEDs are not blinking after N ms
 
-#define DEBOUNCE_DELAY_MS 0 // Possible values:
-                            // 0 - If you added capacitors on buttons. 
+#define DEBOUNCE_DELAY_MS 30 // Possible values:
+                            // 30 - If you added capacitors on buttons. 
                             // 350 - if no capacitors installed on turn buttons (read README.md about the capacitors).
 
 volatile byte state = 0;

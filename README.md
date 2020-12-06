@@ -29,7 +29,7 @@ In "Components" section below you can see "Two 100nF ceramic capacitors". In Sch
 These capacitors not mandatory but strongly recommended. 
 
 Optionally you can use the schematics without those two capacitors if you don't have any. 
-In this case you also need to change value of DEBOUNCE_DELAY_MS constant from 0 to 350, this is required to handle Contact Bounce issue (you can read about it on internet).
+In this case you also need to change value of DEBOUNCE_DELAY_MS constant from 30 to 350, this is required to handle Contact Bounce issue (you can read about it on internet).
 
 Two downsides of removing the capacitors: 
 1) If you press turn button down and hold it more than 350ms before release - it's possbile that it will be handled like second button press because contacts bouncing as we ignore false presses only for 350ms.
