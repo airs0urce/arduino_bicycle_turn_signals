@@ -28,12 +28,7 @@ Note about capacitors on buttons:
 In "Components" section below you can see "Two 100nF ceramic capacitors". In Schematics I marked them as C1 and C2.
 These capacitors not mandatory but strongly recommended. 
 
-Optionally you can use the schematics without those two capacitors if you don't have any. 
-In this case you also need to change value of DEBOUNCE_DELAY_MS constant from 30 to 350, this is required to handle Contact Bounce issue (you can read about it on internet).
-
-Two downsides of removing the capacitors: 
-1) If you press turn button down and hold it more than 350ms before release - it's possbile that it will be handled like second button press because contacts bouncing as we ignore false presses only for 350ms.
-2) Because we hav eto ignore presses for 350ms after it happened, there is another issue as result of the first one: you will not be able to press buttons more often that once per 350ms, presses will be ignored.
+The downside of removing the capacitor: If you press turn button down and hold it more than 350ms before release - it's possbile that it will be handled like second button press because contacts bouncing as we ignore false presses only for 350ms.
 
 Power consumption:
 -------------------------
